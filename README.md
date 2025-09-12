@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 # Hotel-finder
 mern stack application best design ui and technology
 =======
@@ -15,3 +16,7 @@ Currently, two official plugins are available:
 
 If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
 >>>>>>> f3f4950 (First commit)
+=======
+# hotel-finder-web
+find tha best hotel 
+>>>>>>> 9acbeb86f6b997ae54568de10ecab04c00072e84
