@@ -1,23 +1,17 @@
-// src/pages/Home.jsx
-import { useState } from "react";
+import React from 'react';
 import useLenis from "../pages/Layout";
 import hotelVideo from "../assets/hotel.mp4";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import ReviewsPage from "./ReviewsPage";
-import Hero from "../Components/Hero";
 import HotelCards from "./Hotelcard";
+import { useNavigate, Link } from "react-router-dom";
+import Button from "../Components/Button";
+import AnimatedHotelFeatures from "./AnimatedHotelFeatures";
 
 function Home() {
   useLenis();
-
-  const [location, setLocation] = useState("");
-  const [date, setDate] = useState("");
-  const [persons, setPersons] = useState(1);
-
-  const searchHotels = () => {
-    console.log("Searching Hotels:", { location, date, persons });
-  };
+  const navigate = useNavigate(); // 🔹 Router navigation
 
   return (
     <div className="flex flex-col min-h-screen relative">
@@ -33,64 +27,99 @@ function Home() {
           muted
           className="absolute top-0 left-0 w-full h-full object-cover"
         />
-        <div className="absolute inset-0 bg-black/40" />
+        <div className="absolute inset-0" />
 
         {/* Overlay Content */}
         <div className="relative z-10 flex flex-col items-center justify-center h-full text-center text-white px-6">
-          <h1 className="text-5xl md:text-7xl font-bold mb-6 tracking-wide">
-            Experience Luxury
+          <h1 className="text-5xl md:text-7xl font-bold mb-6 tracking-wide text-white drop-shadow-lg">
+            Discover Your Perfect Stay
           </h1>
-          <h2 className="text-2xl md:text-4xl font-light mb-8 opacity-90">
-            The Class You Deserve
+          <h2 className="text-2xl md:text-4xl font-light mb-8 text-[#CFFFDC]">
+            Luxury Meets Comfort
           </h2>
-          <p className="text-lg md:text-xl font-light opacity-80 leading-relaxed max-w-3xl">
-            Discover world-class accommodations crafted for the discerning traveler.
-            Where every moment becomes an unforgettable memory.
+          <p className="text-lg md:text-xl font-light text-white leading-relaxed max-w-3xl mb-10">
+            Experience world-class accommodations in the most beautiful locations.
+            Where every stay becomes an unforgettable memory.
           </p>
 
-          {/* Hero Search Form */}
-          <div className="mt-10 w-full max-w-4xl">
-            <Hero
-              location={location}
-              setLocation={setLocation}
-              date={date}
-              setDate={setDate}
-              persons={persons}
-              setPersons={setPersons}
-              searchHotels={searchHotels}
-            />
+          <div className="flex flex-col sm:flex-row gap-4 mt-6">
+            <Button
+              onClick={() => navigate("/hotel-finder")}
+              variant="primary"
+              size="lg"
+              className="px-8 py-4 text-lg"
+            >
+              Find Hotels
+            </Button>
+            <Button
+              onClick={() => document.getElementById('featured-hotels').scrollIntoView({ behavior: 'smooth' })}
+              variant="outline"
+              size="lg"
+              className="px-8 py-4 text-lg border-white text-white hover:bg-white/10"
+            >
+              Explore
+            </Button>
           </div>
         </div>
       </section>
 
       {/* Featured Hotels */}
-      <section className="py-20 px-6 md:px-16 bg-white text-gray-900">
-        <h2 className="text-4xl font-bold text-center mb-12">Featured Hotels</h2>
-        <HotelCards />
+      <section id="featured-hotels" className="py-20 px-6 md:px-16 bg-white">
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl font-bold text-[#2E6F40] mb-4">Featured Hotels</h2>
+            <div className="w-20 h-1 bg-[#68BA7F] mx-auto"></div>
+          </div>
+          <HotelCards />
+        </div>
       </section>
 
+      {/* Hotel Features */}
+      <AnimatedHotelFeatures />
+
       {/* Reviews */}
-      <section className="py-20 px-6 md:px-16 bg-gray-50">
-        <h2 className="text-4xl font-bold text-center mb-12">
-          What Our Guests Say
-        </h2>
-        <ReviewsPage />
+      <section className="py-20 px-6 md:px-16 bg-[#F8FAF9]">
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl font-bold text-[#2E6F40] mb-4">
+              What Our Guests Say
+            </h2>
+            <div className="w-20 h-1 bg-[#68BA7F] mx-auto mb-12"></div>
+            <ReviewsPage />
+          </div>
+        </div>
       </section>
 
       {/* CTA */}
-      <section className="py-20 bg-indigo-600 text-white text-center">
-        <h2 className="text-4xl font-bold mb-6">
-          Ready to Book Your Dream Stay?
-        </h2>
-        <p className="mb-8 text-lg">
-          Start exploring luxury hotels and resorts today.
-        </p>
-        <a
-          href="/hotel-finder"
-          className="inline-block bg-white text-indigo-600 hover:bg-gray-200 px-6 py-3 rounded-xl font-semibold"
-        >
-          Get Started
-        </a>
+      <section className="py-20 bg-[#2E6F40] text-white text-center">
+        <div className="max-w-4xl mx-auto px-6">
+          <h2 className="text-4xl font-bold mb-6">
+            Ready to Book Your Dream Stay?
+          </h2>
+          <p className="mb-10 text-lg text-[#CFFFDC]">
+            Start exploring our curated selection of luxury hotels and resorts today.
+          </p>
+          <div className="flex flex-col sm:flex-row justify-center gap-4">
+            <Button
+              as={Link}
+              to="/hotel-finder"
+              variant="secondary"
+              size="lg"
+              className="px-8 py-4 text-lg"
+            >
+              Explore Hotels
+            </Button>
+            <Button
+              as={Link}
+              to="/contact"
+              variant="outline"
+              size="lg"
+              className="px-8 py-4 text-lg border-white text-white hover:bg-white/10"
+            >
+              Contact Us
+            </Button>
+          </div>
+        </div>
       </section>
 
       <Footer />
