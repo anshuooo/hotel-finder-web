@@ -101,8 +101,7 @@ function Home() {
           </p>
           <div className="flex flex-col sm:flex-row justify-center gap-4">
             <Button
-              as={Link}
-              to="/hotel-finder"
+             onClick={() => navigate("/hotel-finder")}
               variant="secondary"
               size="lg"
               className="px-8 py-4 text-lg"
@@ -110,8 +109,7 @@ function Home() {
               Explore Hotels
             </Button>
             <Button
-              as={Link}
-              to="/contact"
+             onClick={() => navigate("/contact")}
               variant="outline"
               size="lg"
               className="px-8 py-4 text-lg border-white text-white hover:bg-white/10"

@@ -8,7 +8,7 @@ import Contact from "./pages/Contact";
 import ReviewsPage from "./pages/ReviewsPage";
 import HotelFinder from "./Components/HotelFinder";
 import Signup from "./Components/Signup";
-import Login from "./components/Login";
+import Login from "./Components/Login";
 import Dashboard from "./pages/Dashboard";
 
 function App() {
